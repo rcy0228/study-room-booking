@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Study Room Booking - Dashboard</title>
+</head>
+<body>
+  <h1>Student Dashboard ({{ user.username }})</h1>
+  <h2>Available Rooms</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Room Name</th>
+        <th>Capacity</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for room in rooms %}
+      <tr>
+        <td>{{ room.name }}</td>
+        <td>{{ room.capacity }}</td>
+        <td><a href="{% url 'book_room' room.id %}">Book Now</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <h2>Your Bookings</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Room</th>
+        <th>Date</th>
+        <th>Start Time</th>
+        <th>End Time</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for booking in bookings %}
+      <tr>
+        <td>{{ booking.room.name }}</td>
+        <td>{{ booking.date }}</td>
+        <td>{{ booking.start_time }}</td>
+        <td>{{ booking.end_time }}</td>
+        <td>{{ booking.status }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</body>
+</html>
